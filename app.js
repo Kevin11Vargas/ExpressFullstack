@@ -1,21 +1,21 @@
-//requiere packages and set the port
+// require package and set the port
 const express = require('express');
 const port = 3002;
-//para permitir manejo de POST y PUT
-const bodyParser = require('body-parser');
+//para permitir manejo de PORT y PUT
+const bodyParse = require('body-parser');
 const routes = require('./routes/routes')
 const app = express();
 
-//usar node.js body parsing middleware
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({
+//usar Node.js body parsing middleware
+app.use(bodyParse.json());
+app.use(bodyParse.urlencoded({
     extended: true,
 }));
-
 routes(app);
 
-//iniciar el servidor 
-const server = app-AudioListener(port, (error)=>{
-    if(error) return console.log('Error: ${error}');
-    console.log('El servdor escucha en el puerto ${server.address().port}');
+//Iniciar el servidor
+const server = app.listen(port, (error) =>{
+    if (error) return console.log(`Error: ${error}`);
+
+    console.log(`El servidor escucha en el puerto ${server.address().port}`);
 });
