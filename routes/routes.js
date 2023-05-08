@@ -57,3 +57,49 @@ app.delete('/users/:id',(request, response) => {
         response.send('Users delated.');
     });
 });
+
+//¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨
+//productos
+//Mostrar todos los Usuarios 
+app.get('/productos',(Request,response) =>{
+    pool.query('SELECT * FROM productos',(error,result)=>{
+        if (error) throw error;
+        response.send(result);
+    });
+});
+//mostrar un solo usuario por ID
+app.get('/productos/:id', (request,response) =>{
+    const id =request.params.id;
+    pool.query('SELECT * FROM productos WHERE id= ?', id,(error, result) => {
+        if (error) throw error;
+        response.send(result);
+    });
+});
+
+//agregar un nuevo usuario 
+app.post('/productos', (request,response) => {
+    pool.query('INSERT INTO productos SET ?', request.body, (error, result) => {
+        if (error) throw error;
+
+        response.status(201).send(`User added with ID: ${result.insertId}`);
+    });
+});
+
+app.put('/productos/id',(request, response) => {
+    const id= request.params.id;
+
+    pool.query('UPDATE productos SET ? WHERE id = ? ',[request.body, id], (error, result)=>{
+        if (error) throw error;
+
+        response.send ('User updated successfully. ');
+    }); 
+});
+
+//eliminar un usuario 
+app.delete('/productos/:id',(request, response) => {
+    const id = request.params.id;
+    pool.query('DELETE FROM productos WHERE ID=?', id,(error, result)=>{
+        if (error) throw error;
+        response.send('Users delated.');
+    });
+});
