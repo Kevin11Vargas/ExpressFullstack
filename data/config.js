@@ -2,9 +2,9 @@ const mssql = require('mssql');
 
 //set database connection credentials
 const config = {
-    host: 'localhost',
+    server:'LAPTOP-56179T38',
     user: 'kevin',
-    password: 'kvv#411mdr11', //lo cambie, aqui no hiba nada y en el usuario era root
+    password: '1234', //lo cambie, aqui no hiba nada y en el usuario era root
     database: 'api',
     options: {
         encrypt: true,
