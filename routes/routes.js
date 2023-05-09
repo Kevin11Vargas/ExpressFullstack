@@ -38,7 +38,7 @@ app.post('/users', (request,response) => {
     });
 });
 
-app.put('/users/id',(request, response) => {
+app.put('/users/:id',(request, response) => {
     const id= request.params.id;
 
     pool.query('UPDATE users SET ? WHERE id = ? ',[request.body, id], (error, result)=>{
@@ -83,8 +83,8 @@ app.post('/productos', (request,response) => {
         response.status(201).send(`User added with ID: ${result.insertId}`);
     });
 });
-
-app.put('/productos/id',(request, response) => {
+//actualizar
+app.put('/productos/:id',(request, response) => {
     const id= request.params.id;
 
     pool.query('UPDATE productos SET ? WHERE id = ? ',[request.body, id], (error, result)=>{
