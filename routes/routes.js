@@ -17,9 +17,8 @@ const router=app => {
             response.send(result);
         });
     });
-}
-//exportar el router
-module.exports=router;
+    //exportar el router
+
 
 //mostrar un solo usuario por ID
 app.get('/users/:id', (request,response) =>{
@@ -61,7 +60,7 @@ app.delete('/users/:id',(request, response) => {
 //¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨
 //productos
 //Mostrar todos los Usuarios 
-app.get('/productos',(Request,response) =>{
+app.get('/productos',(request,response) =>{
     pool.query('SELECT * FROM productos',(error,result)=>{
         if (error) throw error;
         response.send(result);
@@ -103,3 +102,6 @@ app.delete('/productos/:id',(request, response) => {
         response.send('Users delated.');
     });
 });
+}
+module.exports=router;
+
