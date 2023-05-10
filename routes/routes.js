@@ -7,7 +7,7 @@ const router=app => {
     //mostrar mensaje de bienvenida de root 
     app.get('/', (Request, response)=>{
         response.send({
-            message:'Bienvenido a Node.js Express REST API! '
+            message:'Bienvenido a Node.js Express REST API! Kevin Fared Velazquez Vargas'
         });
     });
     //Mostrar todos los Usuarios 
